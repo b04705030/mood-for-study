@@ -14,11 +14,11 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function Navbar({ onChannelClicked }) {
+function Navbar({ showOverlay }) {
     const classes = useStyles();
 
-    const handleChannelClicked = (_, channelName) => {
-        onChannelClicked(channelName);
+    const handleOnChannelsClicked = (_) => {
+        showOverlay();
     }
 
     return (
@@ -27,13 +27,9 @@ function Navbar({ onChannelClicked }) {
                 <Button color="inherit">
                     Mood for Study
                 </Button>
-                <Button color="inherit" onClick={(event) => handleChannelClicked(event, "tokyo-cafe")}>
-                    Tokyo Cafe
+                <Button color="inherit" onClick={handleOnChannelsClicked}>
+                    Channels
                 </Button>
-                <Button color="inherit" onClick={(event) => handleChannelClicked(event, "lofi-girl")}>
-                    Lofi Girl
-                </Button>
-                
                 {/* <div style={{ flexGrow: 1 }}></div> */}
                 {/* <Button color="inherit" onClick={() => dispatch(setLocale(LOCALE_OPTIONS.zh))}>中文</Button>
                 <Button color="inherit" onClick={() => dispatch(setLocale(LOCALE_OPTIONS.en))}>English</Button> */}
