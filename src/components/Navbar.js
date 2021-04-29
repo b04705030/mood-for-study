@@ -11,6 +11,11 @@ const useStyles = makeStyles((theme) => ({
     appBar: {
         backgroundColor: 'black',
         zIndex: 1201
+    },
+    appTitle: {
+        fontFamily: 'Codystar',
+        cursive: true,
+        fontSize: '1.2em'
     }
 }));
 
@@ -24,11 +29,8 @@ function Navbar({ showOverlay }) {
     return (
         <AppBar position="fixed" className={classes.appBar}>
             <Toolbar>
-                <Button color="inherit">
+                <Button color="inherit" className={classes.appTitle} onClick={handleOnChannelsClicked}>
                     Mood for Study
-                </Button>
-                <Button color="inherit" onClick={handleOnChannelsClicked}>
-                    Channels
                 </Button>
                 {/* <div style={{ flexGrow: 1 }}></div> */}
                 {/* <Button color="inherit" onClick={() => dispatch(setLocale(LOCALE_OPTIONS.zh))}>中文</Button>

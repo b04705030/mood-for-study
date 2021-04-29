@@ -25,18 +25,27 @@ const useStyles = makeStyles((theme) => ({
   gridList: {
     width: '80vw',
     height: '80vh',
+    paddingTop: '10vh'
   },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
   },
-  appBarSpacer: theme.mixins.toolbar,
   subHeader: {
       textAlign: 'center',
-      color: 'white'
+      color: 'white',
+      fontSize: '2em',
+      fontFamily: 'Codystar',
+      cursive: true,
+      pointerEvents: 'none'
   },
+  videoTile: {
+    '&:hover': {
+        cursor: 'pointer'
+    }
+  }
 }));
 
-export default function TitlebarGridList({ hideOverlay, switchChannel }) {
+export default function Overlay({ hideOverlay, switchChannel }) {
   const classes = useStyles();
   const vidNames = Object.keys(VIDEO_IDS);
 
@@ -46,14 +55,16 @@ export default function TitlebarGridList({ hideOverlay, switchChannel }) {
   };
 
   return (
-    <div className={classes.root}>
-      <GridList cellHeight={180} className={classes.gridList}>
+    <div className={classes.root} onClick={hideOverlay}>
+      <GridList cellHeight={180} className={classes.gridList} cols={2}>
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
           <ListSubheader className={classes.subHeader} component="div">Set the mood for the evening</ListSubheader>
         </GridListTile>
         {vidNames.map((vidName) => (
-          <GridListTile key={vidName} onClick={(event) => handleTileClick(event, vidName)}>
-            <img src={getVideoThumbnailSrc(VIDEO_IDS[vidName])} alt={`${vidName} video thumbnail`}/>
+          <GridListTile key={vidName} className={classes.videoTile}
+            onClick={(event) => handleTileClick(event, vidName)}
+          >
+            <img src={getVideoThumbnailSrc(vidName)} alt={`${vidName} video thumbnail`}/>
             <GridListTileBar
               title={vidName}
             //   subtitle={<span>by: {index}</span>}

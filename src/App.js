@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
-    // textAlign: 'center'
   },
   appBarSpacer: theme.mixins.toolbar,
   videoPlayer: {
@@ -39,11 +38,11 @@ function App() {
   const classes = useStyles();
   // const [playerHeight, setPlayerHeight] = useState(window.innerWidth);
   const [overlay, setOverlay] = useState(true);
-  const [videoId, setVideoId] = useState(VIDEO_IDs['lofi-girl']);
-  let vidSrc = getVideoSrc(videoId);
+  const [video, setVideo] = useState('lofi-girl');
+  let vidSrc = getVideoSrc(video);
 
   const switchChannel = (name) => {
-    setVideoId(VIDEO_IDs[name]);
+    setVideo(name);
   };
 
   const showOverlay = (val) => {
