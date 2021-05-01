@@ -6,13 +6,7 @@ import { getVideoSrc } from './videos';
 import Overlay from './components/Overlay'; 
 import Navbar from './components/Navbar';
 
-
-const VIDEO_IDs = {
-  'lofi-girl': '5qap5aO4i9A',
-  'tokyo-cafe': '6uddGul0oAc',
-  'fireplace-thunderstorm': '3sL0omwElxw',
-  'forest': 'xNN7iTA57jM'
-};
+// TODO: change font family according to different videos
 
 const useStyles = makeStyles((theme) => ({
   app: {

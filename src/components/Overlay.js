@@ -8,6 +8,7 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 
 import { VIDEO_IDS, getVideoThumbnailSrc } from '../videos';
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -49,6 +50,14 @@ export default function Overlay({ hideOverlay, switchChannel }) {
   const classes = useStyles();
   const vidNames = Object.keys(VIDEO_IDS);
 
+  const getPeriodOfDay = () => {
+    const currentDate = new Date();
+    const currentHour = currentDate.getHours();
+    if (currentHour >= 4 && currentHour < 12) { return "morning"; }
+    else if (currentHour >= 12 && currentHour < 18) { return "afternoon"; }
+    else { return "night"; }
+  }
+
   const handleTileClick = (_, vidName) => {
     switchChannel(vidName);
     hideOverlay();
@@ -58,7 +67,9 @@ export default function Overlay({ hideOverlay, switchChannel }) {
     <div className={classes.root} onClick={hideOverlay}>
       <GridList cellHeight={180} className={classes.gridList} cols={2}>
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-          <ListSubheader className={classes.subHeader} component="div">Set the mood for the evening</ListSubheader>
+          <ListSubheader className={classes.subHeader} component="div">
+            Set the mood for the {getPeriodOfDay()}
+          </ListSubheader>
         </GridListTile>
         {vidNames.map((vidName) => (
           <GridListTile key={vidName} className={classes.videoTile}
